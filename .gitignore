@@ -1,0 +1,6 @@
+/.github/
+/.env
+vendor/
+.idea/
+node_modules/
+/.vscode/

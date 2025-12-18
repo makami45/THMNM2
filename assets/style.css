@@ -1,0 +1,8 @@
+body{font-family: Arial, sans-serif; padding:20px}
+main{max-width:900px;margin:0 auto}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border:1px solid #ddd;padding:8px}
+th{background:#f4f4f4}
+section#form label{display:block;margin-bottom:6px}
+section#form input{padding:6px;margin-left:6px}
+button{padding:6px 10px;margin:4px}
