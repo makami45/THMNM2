@@ -1,22 +1,4 @@
-name: "Site Health Check"
-description: "Simple composite action that checks a URL returns HTTP 200."
-author: "assistant"
-inputs:
-  url:
-    description: 'URL to check'
-    required: true
-    default: 'https://example.com'
-runs:
-  using: 'composite'
-  steps:
-    - name: Check site status
-      shell: bash
-      run: |
-        echo "Checking ${INPUT_URL} ..."
-        status=$(curl -s -o /dev/null -w "%{http_code}" "${INPUT_URL}")
-        echo "HTTP status: $status"
-        if [ "$status" -ne 200 ]; then
-          echo "Site check failed: $status"
-          exit 1
-        fi
-        echo "Site OK"
+name: disabled
+
+description: Disabled by project owner.
+

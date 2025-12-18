@@ -1,49 +1,5 @@
-name: PHP Composer
+name: disabled
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: []
 
-permissions:
-  contents: read
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Validate composer.json and composer.lock (skip if missing)
-      run: |
-        if [ -f composer.json ]; then
-          composer validate --strict
-        else
-          echo "composer.json not found — skipping validation"
-        fi
-
-    - name: Cache Composer packages (skip if composer.lock missing)
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
-    - name: Install dependencies (skip if composer.json missing)
-      run: |
-        if [ -f composer.json ]; then
-          composer install --prefer-dist --no-progress
-        else
-          echo "composer.json not found — skipping install"
-        fi
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
+# Disabled by user: CI removed.

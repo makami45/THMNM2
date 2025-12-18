@@ -38,39 +38,8 @@ jobs:
           else
             echo "DB_PASS not set — skipping config and .htaccess creation"
           fi
-      - name: Normalize FTP_REMOTE_DIR
-        run: |
-          dir="${{ secrets.FTP_REMOTE_DIR }}"
-          if [ -n "$dir" ]; then
-            case "$dir" in
-              */) echo "SERVER_DIR=$dir" >> $GITHUB_ENV ;;
-              *) echo "SERVER_DIR=${dir}/" >> $GITHUB_ENV ;;
-            esac
-          else
-            echo "SERVER_DIR=/htdocs/" >> $GITHUB_ENV
-            echo "FTP_REMOTE_DIR not set — defaulting SERVER_DIR=/htdocs/"
-          fi
-        shell: bash
+name: disabled
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: ${{ env.SERVER_DIR }}
+on: []
 
-      - name: Site health check (inline)
-        run: |
-          if [ -n "${{ secrets.SITE_URL }}" ]; then
-            echo "Checking ${{ secrets.SITE_URL }}"
-            status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.SITE_URL }}")
-            echo "HTTP status: $status"
-            if [ "$status" -ne 200 ]; then
-              echo "Site check failed: $status"
-              exit 1
-            fi
-          else
-            echo "SITE_URL not set — skipping health check"
-          fi
+# Disabled by user: CI/CD removed per project owner's request.
