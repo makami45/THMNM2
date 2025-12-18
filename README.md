@@ -47,3 +47,7 @@ Notes about SSL / cloud DB
 
 Security note
 - Never commit real secrets to the repository. Use environment variables, server configuration, or a non-tracked file for passwords and certificates.
+
+---
+Deploy trigger
+- Last deploy trigger: 2025-12-18 (commit to trigger GitHub Actions deploy)
