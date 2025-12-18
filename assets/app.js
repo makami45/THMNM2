@@ -5,6 +5,13 @@ async function loadStudents() {
   const data = await res.json();
   const tbody = document.querySelector('#list tbody');
   tbody.innerHTML = '';
+  if (!Array.isArray(data)) {
+    console.error('API error:', data);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="4">Error loading students: ${escapeHtml(data.error || JSON.stringify(data))}</td>`;
+    tbody.appendChild(tr);
+    return;
+  }
   data.forEach(s => {
     const tr = document.createElement('tr');
     tr.innerHTML = `<td>${s.id}</td><td>${escapeHtml(s.email)}</td><td>${escapeHtml(s.name)}</td><td>
