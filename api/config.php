@@ -1,4 +1,9 @@
 <?php
+// Allow a local override for development (api/config.local.php)
+if (file_exists(__DIR__ . '/config.local.php')) {
+    return require __DIR__ . '/config.local.php';
+}
+
 // Database configuration using environment variables.
 // The code reads these environment variables (recommended):
 //  DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS, DB_SSL_CA

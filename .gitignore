@@ -4,3 +4,4 @@ vendor/
 .idea/
 node_modules/
 /.vscode/
+api/config.local.php
