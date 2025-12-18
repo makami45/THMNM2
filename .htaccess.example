@@ -3,10 +3,10 @@
 # Copy this file to `.htaccess` on your server and fill in values, or set variables via
 # your hosting control panel.
 
-SetEnv DB_HOST mysqlstudent-longnhatyi-9f82.b.aivencloud.com
-SetEnv DB_PORT 11215
-SetEnv DB_NAME defaultdb
-SetEnv DB_USER avnadmin
-SetEnv DB_PASS your_database_password_here
-# Optional: path to CA file on server (or leave blank to use api/ca.pem)
+SetEnv DB_HOST 127.0.0.1
+SetEnv DB_PORT 3306
+SetEnv DB_NAME student_db
+SetEnv DB_USER root
+SetEnv DB_PASS 
+# Optional: path to CA file on server (not used for local WAMP)
 SetEnv DB_SSL_CA 

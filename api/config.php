@@ -17,12 +17,12 @@ $getenv = function($name, $default = null) {
 };
 
 return [
-    'host' => $getenv('DB_HOST', 'mysqlstudent-longnhatyi-9f82.b.aivencloud.com'),
-    'port' => (int)$getenv('DB_PORT', 11215),
-    'dbname' => $getenv('DB_NAME', 'defaultdb'),
-    'user' => $getenv('DB_USER', 'avnadmin'),
-    'pass' => $getenv('DB_PASS', 'REPLACE_PASSWORD'),
-    // If a local ca.pem exists in the api folder, prefer it. Otherwise allow env var path or null.
-    'ssl_ca' => file_exists(__DIR__ . '/ca.pem') ? __DIR__ . '/ca.pem' : $getenv('DB_SSL_CA', null),
+    'host' => $getenv('DB_HOST', '127.0.0.1'),
+    'port' => (int)$getenv('DB_PORT', 3306),
+    'dbname' => $getenv('DB_NAME', 'student_db'),
+    'user' => $getenv('DB_USER', 'root'),
+    'pass' => $getenv('DB_PASS', ''),
+    // No SSL CA by default for local WAMP development.
+    'ssl_ca' => null,
 ];
 
