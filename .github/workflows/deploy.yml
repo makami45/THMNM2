@@ -32,7 +32,17 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          server-dir: ${{ env.SERVER_DIR }}
+
+      - name: Normalize FTP_REMOTE_DIR
+        if: ${{ secrets.FTP_REMOTE_DIR != '' }}
+        run: |
+          dir="${{ secrets.FTP_REMOTE_DIR }}"
+          case "$dir" in
+            */) echo "SERVER_DIR=$dir" >> $GITHUB_ENV ;;
+            *) echo "SERVER_DIR=${dir}/" >> $GITHUB_ENV ;;
+          esac
+        shell: bash
 
       - name: Site health check (inline)
         run: |
